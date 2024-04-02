@@ -22,7 +22,7 @@ if [ ! -S /var/run/tailscale/tailscaled.sock ]; then
 fi
 
 until /app/tailscale up \
-    --login-server=${HS}
+    --login-server=${HS} \
     --authkey=${TAILSCALE_AUTH_KEY} \
     --hostname=flyio-tosviolation-${FLY_REGION} \
     --advertise-exit-node \
