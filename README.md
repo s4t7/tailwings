@@ -40,6 +40,6 @@ $ podman run -d \
    --cap-add=NET_ADMIN \
    --cap-add=NET_RAW \
    --device=/dev/net/tun \ 
-  ghcr.io/spotsnel/flyscale:latest
+  ghcr.io/saahirlol/hs-tailwings:latest
 ```
 
