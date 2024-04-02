@@ -1,6 +1,5 @@
 ARG TSVERSION=1.62.1
 ARG TSFILE=tailscale_${TSVERSION}_amd64.tgz
-ENV HS="https://controlplane.tailscale.com"
 FROM alpine:latest as build
 ARG TSFILE
 WORKDIR /app
@@ -39,4 +38,5 @@ COPY --from=build /app/dnsmasq.conf /etc/dnsmasq.conf
 
 # Run on container startup.
 USER root
+ENV HS="https://controlplane.tailscale.com"
 CMD ["/app/start.sh"]
