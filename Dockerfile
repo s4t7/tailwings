@@ -1,6 +1,6 @@
 ARG TSVERSION=1.62.1
 ARG TSFILE=tailscale_${TSVERSION}_amd64.tgz
-ENV hs=https://controlplane.tailscale.com
+ENV HS="https://controlplane.tailscale.com"
 FROM alpine:latest as build
 ARG TSFILE
 WORKDIR /app
