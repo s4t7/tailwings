@@ -25,27 +25,10 @@ fi
 region_code=${FLY_REGION}
 
 
-# Correction of syntax error in map declaration and use FLY_REGION directly
-declare -A region_map=(
-    [ams]="amsterdam" [arn]="stockholm" [atl]="atlanta" [bog]="bogotá"
-    [bom]="mumbai" [bos]="boston" [cdg]="paris" [den]="denver"
-    [dfw]="dallas" [ewr]="secaucus" [eze]="ezeiza" [fra]="frankfurt"
-    [gdl]="guadalajara" [gig]="rio-de-janeiro" [gru]="sao-paulo"
-    [hkg]="hong-kong" [iad]="ashburn" [jnb]="johannesburg" [lax]="los-angeles"
-    [lhr]="london" [mad]="madrid" [mia]="miami" [nrt]="tokyo"
-    [ord]="chicago" [otp]="bucharest" [phx]="phoenix" [qro]="querétaro"
-    [scl]="santiago" [sea]="seattle" [sin]="singapore" [sjc]="san-jose"
-    [syd]="sydney" [waw]="warsaw" [yul]="montreal" [yyz]="toronto"
-)
-
-city_name=${region_map[${FLY_REGION,,}]}
-
-# Tailscale up command in a loop to handle potential failures
-
 until /app/tailscale up \
     --login-server=${HS} \
     --authkey=${TAILSCALE_AUTH_KEY} \
-    --hostname=${city_name}-flyio \
+    --hostname=${FLY_REGION}-flyio \
     --advertise-exit-node \
     --ssh
 do
