@@ -25,48 +25,22 @@ fi
 region_code=${FLY_REGION}
 
 
-# Map of fly.io region codes to lowercase city names without country or province
-declare -A region_map
-region-map["ams"]="amsterdam"
-region-map["arn"]="stockholm"
-region-map["atl"]="atlanta"
-region-map["bog"]="bogotá"
-region-map["bom"]="mumbai"
-region-map["bos"]="boston"
-region-map["cdg"]="paris"
-region-map["den"]="denver"
-region-map["dfw"]="dallas"
-region-map["ewr"]="secaucus"
-region-map["eze"]="ezeiza"
-region-map["fra"]="frankfurt"
-region-map["gdl"]="guadalajara"
-region-map["gig"]="rio-de-janeiro"
-region-map["gru"]="sao-paulo"
-region-map["hkg"]="hong-kong"
-region-map["iad"]="ashburn"
-region-map["jnb"]="johannesburg"
-region-map["lax"]="los-angeles"
-region-map["lhr"]="london"
-region-map["mad"]="madrid"
-region-map["mia"]="miami"
-region-map["nrt"]="tokyo"
-region-map["ord"]="chicago"
-region-map["otp"]="bucharest"
-region-map["phx"]="phoenix"
-region-map["qro"]="querétaro"
-region-map["scl"]="santiago"
-region-map["sea"]="seattle"
-region-map["sin"]="singapore"
-region-map["sjc"]="san-jose"
-region-map["syd"]="sydney"
-region-map["waw"]="warsaw"
-region-map["yul"]="montreal"
-region-map["yyz"]="toronto"
+# Correction of syntax error in map declaration and use FLY_REGION directly
+declare -A region_map=(
+    [ams]="amsterdam" [arn]="stockholm" [atl]="atlanta" [bog]="bogotá"
+    [bom]="mumbai" [bos]="boston" [cdg]="paris" [den]="denver"
+    [dfw]="dallas" [ewr]="secaucus" [eze]="ezeiza" [fra]="frankfurt"
+    [gdl]="guadalajara" [gig]="rio-de-janeiro" [gru]="sao-paulo"
+    [hkg]="hong-kong" [iad]="ashburn" [jnb]="johannesburg" [lax]="los-angeles"
+    [lhr]="london" [mad]="madrid" [mia]="miami" [nrt]="tokyo"
+    [ord]="chicago" [otp]="bucharest" [phx]="phoenix" [qro]="querétaro"
+    [scl]="santiago" [sea]="seattle" [sin]="singapore" [sjc]="san-jose"
+    [syd]="sydney" [waw]="warsaw" [yul]="montreal" [yyz]="toronto"
+)
 
+city_name=${region_map[${FLY_REGION,,}]}
 
-city_name=${region_map[${region_code,,}]}
-
-#end of this
+# Tailscale up command in a loop to handle potential failures
 
 until /app/tailscale up \
     --login-server=${HS} \
