@@ -36,6 +36,7 @@ included, or use:
 ```sh
 $ podman run -d \
    --name=tailwings \
+   --env=HS=yourserver.here \
    --env=TAILSCALE_AUTH_KEY=tskey-... \
    --cap-add=NET_ADMIN \
    --cap-add=NET_RAW \
