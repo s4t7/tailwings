@@ -1,4 +1,4 @@
-Tailscale Tailwings
+Headscale Tailwings
 ===================
 
 This is a container image that runs a Tailscale exit node and proxy servers
