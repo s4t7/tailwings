@@ -5,8 +5,8 @@ This is a container image that runs a Tailscale exit node and proxy servers
 to work as a 'personal VPN' service, that can be deployed using Fly.io or
 other container hosting platforms.
 
-This is a fork of [patte/fly-tailscale-exit](https://github.com/patte/fly-tailscale-exit/)
-with some minor fixes and additions, like Squid and Dante to acts as proxies.
+This is a fork of [spotsnel/tailscale-tailwings](https://github.com/spotsnel/tailscale-tailwings)
+with Headscale support.
 
 
 Usage
