@@ -90,7 +90,9 @@ $ flyctl launch
 
 #### 9. Set the tailscale auth key in fly
 ```sh
-$ flyctl secrets set TAILSCALE_AUTH_KEY=[see step 4]
+$ flyctl secrets set TAILSCALE_AUTH_KEY=[see step 5]
+$ flyctl secrets set HS=[Your server here]
+- the HS part is optional btw
 Secrets are staged for the first deployment
 ```
 
