@@ -88,13 +88,13 @@ $ flyctl launch
 ? would you like to deploy now : (yes/no) no
 ```
 
-#### 9. Set the tailscale auth key in fly
+#### 9. Set the auth key and server in fly
 ```sh
 $ flyctl secrets set TAILSCALE_AUTH_KEY=[see step 5]
 $ flyctl secrets set HS=[Your server here]
-- the HS part is optional btw
 Secrets are staged for the first deployment
 ```
+- the HS part is optional btw
 
 
 #### 10. Set autoapprovers for Exitnode (optional)
