@@ -94,7 +94,7 @@ $ flyctl secrets set TAILSCALE_AUTH_KEY=[see step 5]
 $ flyctl secrets set HS=[Your server here]
 Secrets are staged for the first deployment
 ```
-- the HS part is optional btw
+- the HS part is optional by the way. The default server is the tailscale control server.
 
 
 #### 10. Set autoapprovers for Exitnode (optional)
