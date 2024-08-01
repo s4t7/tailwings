@@ -34,7 +34,7 @@ deabbreviate() {
         gru) echo "sao-paulo" ;;
         hkg) echo "hong-kong" ;;
         iad) echo "virginia-ashburn" ;;
-        jnb) echo "johannesburg" ;;
+        jnb) echo "south-africa-johannesburg" ;;
         lax) echo "los-angeles" ;;
         lhr) echo "london" ;;
         mad) echo "madrid" ;;
