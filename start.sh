@@ -13,22 +13,70 @@ sysctl -p /etc/sysctl.conf
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
-# --tun=userspace-networking --socks5-server=localhost:3215
+# Function to de-abbreviate a region ID to city
+deabbreviate() {
+    local region_id=$1
+    case $region_id in
+        ams) echo "amsterdam" ;;
+        arn) echo "stockholm" ;;
+        atl) echo "atlanta" ;;
+        bog) echo "bogotá" ;;
+        bom) echo "mumbai" ;;
+        bos) echo "boston" ;;
+        cdg) echo "paris" ;;
+        den) echo "denver" ;;
+        dfw) echo "dallas" ;;
+        ewr) echo "secaucus" ;;
+        eze) echo "ezeiza" ;;
+        fra) echo "frankfurt" ;;
+        gdl) echo "guadalajara" ;;
+        gig) echo "rio-de-janeiro" ;;
+        gru) echo "sao-paulo" ;;
+        hkg) echo "hong-kong" ;;
+        iad) echo "ashburn" ;;
+        jnb) echo "johannesburg" ;;
+        lax) echo "los-angeles" ;;
+        lhr) echo "london" ;;
+        mad) echo "madrid" ;;
+        mia) echo "miami" ;;
+        nrt) echo "tokyo" ;;
+        ord) echo "chicago" ;;
+        otp) echo "bucharest" ;;
+        phx) echo "phoenix" ;;
+        qro) echo "querétaro" ;;
+        scl) echo "santiago" ;;
+        sea) echo "seattle" ;;
+        sin) echo "singapore" ;;
+        sjc) echo "san-jose" ;;
+        syd) echo "sydney" ;;
+        waw) echo "warsaw" ;;
+        yul) echo "montreal" ;;
+        yyz) echo "toronto" ;;
+        *) echo "unknown" ;;
+    esac
+}
+
+
+# Get actual city name
+region_code=${FLY_REGION}
+city=$(deabbreviate $region_code)
+
+echo "Region code: $region_code"
+echo "City: $city"
+
+# Start tailscaled
 /app/tailscaled --verbose=1 --port 41641 &
 sleep 5
+
 if [ ! -S /var/run/tailscale/tailscaled.sock ]; then
     echo "tailscaled.sock does not exist. exit!"
     exit 1
 fi
-### Get actual city names
-
-region_code=${FLY_REGION}
-
 
 until /app/tailscale up \
     --login-server=${HS} \
     --authkey=${TAILSCALE_AUTH_KEY} \
-    --hostname=${FLY_REGION}-flyio \
+    --hostname=flyio-${city} \
     --advertise-exit-node \
     --ssh
 do
