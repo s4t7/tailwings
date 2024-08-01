@@ -35,7 +35,7 @@ deabbreviate() {
         hkg) echo "hong-kong" ;;
         iad) echo "virginia-ashburn" ;;
         jnb) echo "johannesburg" ;;
-        lax) echo "cali-los-angeles" ;;
+        lax) echo "los-angeles" ;;
         lhr) echo "london" ;;
         mad) echo "madrid" ;;
         mia) echo "miami" ;;
@@ -47,7 +47,7 @@ deabbreviate() {
         scl) echo "chile-santiago" ;;
         sea) echo "seattle" ;;
         sin) echo "singapore" ;;
-        sjc) echo "cali-san-jose" ;;
+        sjc) echo "san-jose" ;;
         syd) echo "sydney" ;;
         waw) echo "warsaw" ;;
         yul) echo "montreal" ;;
