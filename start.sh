@@ -20,13 +20,13 @@ deabbreviate() {
         ams) echo "amsterdam" ;;
         arn) echo "stockholm" ;;
         atl) echo "atlanta" ;;
-        bog) echo "bogotá" ;;
+        bog) echo "bogota" ;;
         bom) echo "mumbai" ;;
         bos) echo "boston" ;;
         cdg) echo "paris" ;;
         den) echo "denver" ;;
         dfw) echo "dallas" ;;
-        ewr) echo "secaucus" ;;
+        ewr) echo "new-jersey" ;;
         eze) echo "ezeiza" ;;
         fra) echo "frankfurt" ;;
         gdl) echo "guadalajara" ;;
@@ -43,7 +43,7 @@ deabbreviate() {
         ord) echo "chicago" ;;
         otp) echo "bucharest" ;;
         phx) echo "phoenix" ;;
-        qro) echo "querétaro" ;;
+        qro) echo "queretaro" ;;
         scl) echo "santiago" ;;
         sea) echo "seattle" ;;
         sin) echo "singapore" ;;
