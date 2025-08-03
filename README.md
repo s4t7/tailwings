@@ -21,7 +21,7 @@ You can also use `ssh` to connect to the node with the `-D` option or `sshuttle`
 Authentication is handled by Tailscale SSH, and currently expects `root` as user.
 
 On port `53` it runs dnsmasq as a forwarder.
-
+   
 
 Deploy
 ------
