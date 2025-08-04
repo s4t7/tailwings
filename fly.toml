@@ -1,31 +1,41 @@
-app = "flyscale"
+# fly.toml app configuration file generated for saahirscale on 2024-06-18T08:56:22-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-primary_region = "nrt"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
-
-[build]
-  image = "ghcr.io/saahirlol/tailwings:fly-io"
-
-[env]
-  PORT="41641"
-# create a reusable or ephemeral auth key
-# ephemeral auth key are not working for use as exit node as they are ipv6 only
-# flyctl secrets set TAILSCALE_AUTH_KEY=tskey-...
+app = 'headwings'
+primary_region = 'dfw'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
 
 [experimental]
-  auto_rollback = false
-  private_network = true
+
+[build]
+  image = 'ghcr.io/saahirlol/tailwings:fly-io'
+
+[env]
+  HS = 'https://hs.saahir.lol'
+  PORT = '41641'
+  TAILSCALE_AUTH_KEY = '2b950fc9f5ecfeb2b3ae41d4ec0d2c21995449c4ca51e0d5'
 
 [[services]]
+  protocol = 'udp'
   internal_port = 41641
-  protocol = "udp"
-  processes = ["app"]
+  processes = ['app']
 
   [[services.ports]]
     port = 41641
 
   [services.concurrency]
-    type = "connections"
+    type = 'connections'
     hard_limit = 100
     soft_limit = 75
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[[mounts]]
+  source = "state"
+  destination = "/var/lib/tailscale"
